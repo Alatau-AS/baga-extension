@@ -1,0 +1,33 @@
+document.getElementById("btn").addEventListener("click", async () => {
+  const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+
+  if (!tab) return;
+
+  chrome.scripting.executeScript({
+    target: { tabId: tab.id },
+    func: onTab(),
+  }, (results) => {
+    if( results && results[0]) {
+      // console.log(`Answer from activeTab: ${results[0].result}`)
+      console.log("Answer from activeTab: ", results[0].result)
+    }
+  // alert("HELLO?");
+  });
+});
+
+
+function onTab() {
+  fetch("https://kaspi.kz/yml/offer-view/offers/106185651", {
+    "headers": {
+      "accept": "application/json, text/*", /**/
+      "accept-language": "ru-RU,ru;q=0.5",
+      "content-type": "application/json; charset=UTF-8",
+      "x-ks-city": "515433100"
+    },
+    "referrer": "https://kaspi.kz/shop/p/chehol-dlja-apple-iphone-13-prozrachnyi-106185651/?c=515433100",
+    "body": "{\"cityId\":\"515433100\",\"id\":\"106185651\",\"merchantUID\":[],\"limit\":5,\"page\":0,\"product\":{\"brand\":\"Без бренда\",\"categoryCodes\":[\"Phone cases\",\"Phone accessories\",\"Smartphones and gadgets\",\"Categories\"],\"baseProductCodes\":[],\"groups\":null,\"productSeries\":[]},\"sortOption\":\"PRICE\",\"highRating\":null,\"searchText\":null,\"isExcellentMerchant\":false,\"zoneId\":[\"515433100\"],\"installationId\":\"-1\"}",
+    "method": "POST",
+    "mode": "cors",
+    "credentials": "include"
+  });
+}

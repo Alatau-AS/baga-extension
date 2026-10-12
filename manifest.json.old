@@ -1,0 +1,14 @@
+{
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "26.10.04.18",
+  "manifest_version": 3,
+  "permissions": ["activeTab", "scripting", "declarativeNetRequest"],
+  "host_permissions": [
+    "https://kaspi.kz*"
+  ],
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": "hello_extensions.png"
+  }
+}

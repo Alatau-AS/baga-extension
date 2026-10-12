@@ -1,0 +1,16 @@
+{
+  "name": "Hello Extensions",
+  "description": "Base Level Extension",
+  "version": "26.10.04.18",
+  "manifest_version": 3,
+  "host_permissions": [
+    "https://kaspi.kz/*",
+    "https://*.kaspi.kz/*"
+  ],
+  "permissions": [ "activeTab", "contextMenus", "scripting", "storage" ],
+  "action": {
+    "default_popup": "hello.html",
+    "default_title": "Get latest price on the Item",
+    "default_icon": "hello_extensions.png"
+  }
+}
